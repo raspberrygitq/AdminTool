@@ -4,7 +4,7 @@
         <LangVersion>latest</LangVersion>
         <DebugType>embedded</DebugType>
 
-        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionPrefix>1.0.1</VersionPrefix>
         <!-- <VersionSuffix>dev</VersionSuffix> -->
         <Description>Host Administration Tool</Description>
         <Authors>gitq</Authors>

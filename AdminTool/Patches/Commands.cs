@@ -17,7 +17,19 @@ namespace AdminTool.Patches
             {
                 if (__instance != HudManager.Instance.Chat) return true;
 
-                if (chatText.ToLower().StartsWith("!id"))
+                if (chatText.ToLower().StartsWith("?help"))
+                {
+                    if (sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId)
+                    {
+                        chatText =
+                            "?id - See players ids\n" +
+                            "?kick [id] - Kick player by its id\n" +
+                            "?ban [id] - Ban player by its id";
+                        system = true;
+                    }
+                    return sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId;
+                }
+                if (chatText.ToLower().StartsWith("?id"))
                 {
                     if (sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId)
                     {
@@ -32,7 +44,7 @@ namespace AdminTool.Patches
                     }
                     return sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId;
                 }
-                if (chatText.ToLower().StartsWith("!kick "))
+                if (chatText.ToLower().StartsWith("?kick "))
                 {
                     if (GameData.Instance.GetHost() == sourcePlayer.Data && sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId)
                     {
@@ -74,7 +86,7 @@ namespace AdminTool.Patches
                     return sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId;
                 }
 
-                if (chatText.ToLower().StartsWith("!ban "))
+                if (chatText.ToLower().StartsWith("?ban "))
                 {
                     if (GameData.Instance.GetHost() == sourcePlayer.Data && sourcePlayer.PlayerId == PlayerControl.LocalPlayer.PlayerId)
                     {
